@@ -1,0 +1,215 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.message_error {
+    width: 100%;
+    font-size: 30px;
+    margin-top: 100px;
+}
+.wrapper {
+    width: 100%;
+    padding-top: 100px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.cursor_pointer {
+    cursor: pointer;
+}
+.display_block {
+    display: block;
+}
+.btn_close{
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+}
+.spinner{
+    position: absolute;
+    z-index: 9999;
+    top: 30%;
+    width: 40px;
+    left: 50%;
+    margin-left: -20px;
+}
+.spinner .fa-spinner {
+    font-size:40px;
+}
+.clearfix:after, .clearfix:before {
+    content: " ";
+    display: table;
+}
+.clear, .clearfix:after {
+    clear: both;
+}
+
+/**
+* Animaciones
+**/
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+/**
+* PHOTOS
+**/
+.wrapper .photos {
+    max-width: 300px;
+    width: 30%;
+    margin: 1%;
+    padding: 1%;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 1px #00000073;
+}
+.wrapper .photos img {
+    width: 100%;
+}
+
+/**
+* NAVBAR
+**/
+.navbar {
+    background: #000000;
+    padding: 20px 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.navbar .logo {
+    color: #ffffff;
+    text-decoration: none;
+    float: left; 
+}
+.navbar .form_text {
+    float: right;
+    margin-right: 35px;
+    padding: 5px 20px 5px 10px;
+    max-width: 400px;
+    width: 30%;
+    border-radius: 6px;
+}
+
+
+
+.popup {
+    background-color: #00000070;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.popup .container {
+    width: 700px;
+    background-color: #ffffff;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    padding: 20px;
+    margin-left: -350px;
+    border-radius: 10px;
+}
+.photo_title {
+    text-transform:uppercase;
+    font-size: 20px;
+    border-bottom: 1px solid #dddddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.popup .tags {
+    padding: 5px 10px;
+    background-color:#616161;
+    border-radius: 10px;
+    margin: 0 10px 8px 0;
+    display: inline-block;
+    color: #ffffff;
+    font-size: 13px;
+    box-shadow: 0px 1px 0px #0000005e;
+}
+.popup .photo_image, .popup .photo_description {
+    display: inline-block;
+    vertical-align: top;
+
+}
+.popup .photo_description {
+    width: 370px;
+}
+
+.popup .photo_image {
+    margin-right: 15px;
+    border-right: 1px solid #ddd;
+    padding-right: 15px;
+
+}
+.popup .photo_description h4 {
+    margin: 0 0 10px;
+    text-transform: uppercase;
+}
+
+.popup .view_image {
+    background: #4dbdfb;
+    color: white;
+    padding: 8px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+    box-shadow: 0px 1px 0px #0000005e;
+    transition: .3s .3s ease;
+}
+
+.popup .view_image:hover {
+    background: #43a5dc;
+}
+.photo_description .display_block {
+    margin-bottom: 10px;
+}
+
+
+@media (max-width: 720px) {
+    .popup {
+        text-align: center;
+    }
+    .popup .container {
+        width: 100%;
+        margin-left: 0;
+        left:0;
+    }
+    .popup .photo_image {
+        margin-right: 0;
+        border-right: 0;
+        padding-right: 0;
+    }
+    .popup .photo_description {
+        width: auto;
+        margin-top: 20px;
+    }
+    .wrapper .photos {
+        max-width: initial;
+        width: 100%;
+    }
+}

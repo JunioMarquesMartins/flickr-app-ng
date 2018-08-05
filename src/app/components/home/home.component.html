@@ -1,0 +1,50 @@
+<div class="navbar clearfix">
+    <a class="logo" href="javascript:void(0)">Flickr App - angular</a>
+    <input class="form_text" type="text" ng-model-options="{debounce: 500}" (keyup)="search($event.srcElement.value)" placeholder="Search ...">
+</div>
+
+<div *ngIf="loading" class="spinner animated fadeIn">
+    <i class="fas fa-spinner fa-spin"></i>
+</div>
+
+<div *ngIf="!loading && getData.length>0" class="wrapper">
+    <div class="photos cursor_pointer" *ngFor="let item of getData" (click)="showPhotoInfo(item.id)">
+        <img src="http://farm{{item.farm}}.static.flickr.com/{{item.server}}/{{item.id}}_{{item.secret}}_m.jpg" alt="">
+        <span>{{ item.title }}</span>
+    </div>
+</div>
+
+<div *ngIf="getData.length===0" class="wrapper">
+    <h4 class="message_error">:( Sorry there are no images with this search</h4>
+</div>
+
+<div *ngIf="photoInfo" class="popup" (click)="closePopup()">
+    <div class="container" (click)="notEventPropagation($event)">
+        <button class="btn_close cursor_pointer" (click)="closePopup()">
+            <i class="fas fa-times"></i>
+        </button>
+        <h1 class="photo_title">{{photoInfo.title._content}}</h1>
+        <div class="photo_container">
+            <div class="photo_image">
+                <a [href]="photoInfo.urls.url[0]._content" target="_blank">
+                    <img src="http://farm{{photoInfo.farm}}.static.flickr.com/{{photoInfo.server}}/{{photoInfo.id}}_{{photoInfo.secret}}_m.jpg" alt="">
+                </a>  
+            </div>
+            <div class="photo_description">
+                <h4>Author: {{ photoInfo.owner.username }}</h4>
+                <div>
+                    <span><strong>Captured:</strong> {{ photoInfo.dates.taken | date: 'dd/MM/yyyy' }}</span>
+                </div>
+                <div>
+                    <p>
+                        <span class="display_block"><strong>TAGS</strong></span>
+                        <span class="tags" *ngFor="let tag of photoInfo.tags.tag">{{ tag._content }}</span>
+                    </p>
+                </div>
+                <div>
+                    <a class="view_image" [href]="photoInfo.urls.url[0]._content" target="_blank">View Image</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
