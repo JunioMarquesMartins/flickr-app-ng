@@ -1,25 +1,25 @@
 <div class="navbar clearfix">
     <a class="logo" href="javascript:void(0)">Flickr App - angular</a>
-    <input class="form_text" type="text" ng-model-options="{debounce: 500}" (keyup)="search($event.srcElement.value)" placeholder="Search ...">
+    <input class="form_text" type="text" (keyup)="search($event.srcElement.value)" placeholder="Search photo">
 </div>
 
-<div *ngIf="loading" class="spinner animated fadeIn">
+<div *ngIf="loadingIsShow()" class="spinner animated fadeIn">
     <i class="fas fa-spinner fa-spin"></i>
 </div>
 
-<div *ngIf="!loading && getData.length>0" class="wrapper">
+<div *ngIf="fhotosIsRender()" class="wrapper">
     <div class="photos cursor_pointer" *ngFor="let item of getData" (click)="showPhotoInfo(item.id)">
         <img src="http://farm{{item.farm}}.static.flickr.com/{{item.server}}/{{item.id}}_{{item.secret}}_m.jpg" alt="">
         <span>{{ item.title }}</span>
     </div>
 </div>
 
-<div *ngIf="getData.length===0" class="wrapper">
+<div *ngIf="getData.length===0 && querySearch" class="wrapper">
     <h4 class="message_error">:( Sorry there are no images with this search</h4>
 </div>
 
 <div *ngIf="photoInfo" class="popup" (click)="closePopup()">
-    <div class="container" (click)="notEventPropagation($event)">
+    <div class="container" (click)="stopEventPropagation($event)">
         <button class="btn_close cursor_pointer" (click)="closePopup()">
             <i class="fas fa-times"></i>
         </button>

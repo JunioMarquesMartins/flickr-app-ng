@@ -2,16 +2,15 @@ import { Component } from '@angular/core';
 import { FlickrService } from "../../services/flickr.service";
 import { ActivatedRoute } from "@angular/router";
 
-import { debounceTime } from 'rxjs/operators';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html'
 })
 export class HomeComponent{
 
-  getData: any;
+  getData: any[] = [];
   photoInfo: any;
+  querySearch: string;
   loading: boolean;
 
   constructor(private router: ActivatedRoute, private flickr: FlickrService) {
@@ -19,9 +18,8 @@ export class HomeComponent{
     this.loading=true;
     this.flickr.getPhotos('sunset')
       .subscribe(data=>{
-        this.loading = false;
         this.getData = data;
-        console.log(data);
+        this.loading = false;
       })
   }
 
@@ -34,22 +32,31 @@ export class HomeComponent{
     })
   }
 
-  search(tag:string){
+  search(query:string){
     this.loading=true;
-    this.flickr.getPhotos(tag)
+    this.querySearch = query;
+    this.flickr.getPhotos(query)
     .subscribe(data=>{
       this.getData = data;
       this.loading=false;
     })
   }
 
-  closePopup(){
-    this.photoInfo = false;
+  closePopup(){ this.photoInfo = false; }
+  stopEventPropagation(event){ event.stopPropagation(); }
+
+  loadingIsShow(){
+    if(this.loading===true){
+      return true;
+    }
+    return false;
   }
-  
-  notEventPropagation(event){
-    console.log(event);
-    event.stopPropagation();
+
+  fhotosIsRender(){
+    if(this.getData.length>0 && this.loading===false){
+      return true;
+    }
+    return false;
   }
 
 }
