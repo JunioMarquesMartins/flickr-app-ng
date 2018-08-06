@@ -3,11 +3,9 @@
     <input class="form_text" type="text" (keyup)="search($event.srcElement.value)" placeholder="Search photo">
 </div>
 
-<div *ngIf="loadingIsShow()" class="spinner animated fadeIn">
-    <i class="fas fa-spinner fa-spin"></i>
-</div>
+<app-spinner *ngIf="loadingIsShow()"></app-spinner>
 
-<div *ngIf="fhotosIsRender()" class="wrapper">
+<div *ngIf="photosIsRender()" class="wrapper">
     <div class="photos cursor_pointer" *ngFor="let item of getData" (click)="showPhotoInfo(item.id)">
         <img src="http://farm{{item.farm}}.static.flickr.com/{{item.server}}/{{item.id}}_{{item.secret}}_m.jpg" alt="">
         <span>{{ item.title }}</span>

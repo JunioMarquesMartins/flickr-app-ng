@@ -4,7 +4,8 @@ import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent{
 
@@ -16,7 +17,7 @@ export class HomeComponent{
   constructor(private router: ActivatedRoute, private flickr: FlickrService) {
 
     this.loading=true;
-    this.flickr.getPhotos('sunset')
+    this.flickr.getPhotos('')
       .subscribe(data=>{
         this.getData = data;
         this.loading = false;
@@ -52,7 +53,7 @@ export class HomeComponent{
     return false;
   }
 
-  fhotosIsRender(){
+  photosIsRender(){
     if(this.getData.length>0 && this.loading===false){
       return true;
     }

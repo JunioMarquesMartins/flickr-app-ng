@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles */
 * {
     box-sizing: border-box;
 }
@@ -31,62 +31,6 @@ body{
     right: 0;
     margin-right: 20px;
 }
-.spinner{
-    position: absolute;
-    z-index: 9999;
-    top: 30%;
-    width: 40px;
-    left: 50%;
-    margin-left: -20px;
-}
-.spinner .fa-spinner {
-    font-size:40px;
-}
-.clearfix:after, .clearfix:before {
-    content: " ";
-    display: table;
-}
-.clear, .clearfix:after {
-    clear: both;
-}
-
-/**
-* Animaciones
-**/
-.animated {
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.fadeIn {
-    animation-name: fadeIn;
-}
-
-/**
-* PHOTOS
-**/
-.wrapper .photos {
-    max-width: 300px;
-    width: 30%;
-    margin: 1%;
-    padding: 1%;
-    box-sizing: border-box;
-    box-shadow: 0px 0px 1px #00000073;
-}
-.wrapper .photos img {
-    width: 100%;
-}
 
 /**
 * NAVBAR
@@ -102,7 +46,8 @@ body{
 .navbar .logo {
     color: #ffffff;
     text-decoration: none;
-    float: left; 
+    float: left;
+    font-size: 22px;
 }
 .navbar .form_text {
     float: right;
@@ -212,4 +157,12 @@ body{
         max-width: initial;
         width: 100%;
     }
+}
+
+.clearfix:after, .clearfix:before {
+    content: " ";
+    display: table;
+}
+.clear, .clearfix:after {
+    clear: both;
 }

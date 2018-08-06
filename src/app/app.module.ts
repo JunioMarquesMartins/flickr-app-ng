@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { SpinnerComponent } from "./components/spinner/spinner.component";
 
 // Importar Rutas
 import { ROUTES } from './app.routes';
@@ -15,7 +16,8 @@ import { FlickrService } from "./services/flickr.service";
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
