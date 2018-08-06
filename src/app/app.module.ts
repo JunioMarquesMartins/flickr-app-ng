@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { SpinnerComponent } from "./components/spinner/spinner.component";
 
+import { InfiniteScrollModule } from '../../node_modules/angular2-infinite-scroll';
+
 // Importar Rutas
 import { ROUTES } from './app.routes';
 
@@ -22,6 +24,7 @@ import { FlickrService } from "./services/flickr.service";
   imports: [
     BrowserModule,
     HttpClientModule,
+    InfiniteScrollModule,
     RouterModule.forRoot(ROUTES, { useHash: true } )
   ],
   providers: [

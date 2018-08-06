@@ -18,7 +18,8 @@ body{
     text-align: center;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: center;
 }
 .cursor_pointer {
     cursor: pointer;

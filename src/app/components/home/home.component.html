@@ -5,7 +5,12 @@
 
 <app-spinner *ngIf="loadingIsShow()"></app-spinner>
 
-<div *ngIf="photosIsRender()" class="wrapper">
+<div *ngIf="photosIsRender()"
+    class="wrapper"
+    infinite-scroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="10"
+    (scrolled)="onScrollDown()">
     <div class="photos cursor_pointer" *ngFor="let item of getData" (click)="showPhotoInfo(item.id)">
         <img src="http://farm{{item.farm}}.static.flickr.com/{{item.server}}/{{item.id}}_{{item.secret}}_m.jpg" alt="">
         <span>{{ item.title }}</span>

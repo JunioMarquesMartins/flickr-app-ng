@@ -16,9 +16,9 @@ export class FlickrService {
 
     }
 
-    getPhotos(query){
+    getPhotos(query, page){
 
-        return this.getUrlString(`?method=flickr.photos.search&api_key=d32790976c1a1204b3225a65ddc79947&user_id=21892180@N04&text=${query}&format=json&nojsoncallback=1`)
+        return this.getUrlString(`?method=flickr.photos.search&page=${page}&api_key=d32790976c1a1204b3225a65ddc79947&user_id=21892180@N04&text=${query}&format=json&nojsoncallback=1`)
               .pipe( map( data =>  data['photos'].photo ));
         
     }

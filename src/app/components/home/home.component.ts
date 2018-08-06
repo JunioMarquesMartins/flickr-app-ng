@@ -14,14 +14,31 @@ export class HomeComponent{
   querySearch: string;
   loading: boolean;
 
+
+  // Scroll
+  modalScrollDistance = 2;
+  modalScrollThrottle = 50;
+  page=1;
+
   constructor(private router: ActivatedRoute, private flickr: FlickrService) {
 
+    this.initPhotos(this.page);
+  }
+
+  initPhotos(page){
     this.loading=true;
-    this.flickr.getPhotos('')
+    this.flickr.getPhotos('', page)
       .subscribe(data=>{
         this.getData = data;
         this.loading = false;
       })
+  }
+
+  onScrollDown () {
+    this.loading=true;
+    console.log('scrolled!!');
+    this.page ++;
+    this.initPhotos(this.page);
   }
 
   showPhotoInfo(id){
@@ -36,7 +53,8 @@ export class HomeComponent{
   search(query:string){
     this.loading=true;
     this.querySearch = query;
-    this.flickr.getPhotos(query)
+    this.page = 1;
+    this.flickr.getPhotos(query, this.page)
     .subscribe(data=>{
       this.getData = data;
       this.loading=false;
